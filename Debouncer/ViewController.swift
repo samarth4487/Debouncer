@@ -10,9 +10,27 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let debouncer = Debouncer(timeInterval: 0.3)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        doSomething()
+        doSomething()
+        doSomething()
+        doSomething()
+        doSomething()
+        doSomething()
+        doSomething()
+    }
+    
+    func doSomething() {
+        
+        debouncer.renewInterval()
+        
+        debouncer.handler = {
+            print("Called only once")
+        }
     }
 
 
