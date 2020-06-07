@@ -15,24 +15,30 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        doSomething()
-        doSomething()
-        doSomething()
-        doSomething()
-        doSomething()
-        doSomething()
-        doSomething()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.doSomething()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.doSomething()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.doSomething()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        self.doSomething()
+                    }
+                }
+            }
+        }
     }
     
     func doSomething() {
         
         debouncer.renewInterval()
-        
+        print("renew interval")
         debouncer.handler = {
-            print("Called only once")
+            print("method executed")
         }
     }
-
-
 }
 
